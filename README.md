@@ -20,4 +20,3 @@ import "github.com/flybikeGx/easy-timeout/timelimit"
 ## Guarantee
 1. Thread safe
 2. Stop at the exact time as golang timer
-3.

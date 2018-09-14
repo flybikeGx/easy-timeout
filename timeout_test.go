@@ -1,4 +1,4 @@
-package timelimit
+package timeout
 
 import (
 	"fmt"
@@ -28,4 +28,18 @@ func TestRun(t *testing.T) {
 			t.Fatal("random error: ", timelimit, runtime)
 		}
 	}
+}
+
+func TestPanic(t *testing.T) {
+	timelimit := time.Millisecond * 500
+	ok := Run(timelimit, func() {
+		defer func() {
+			if err := recover(); err != nil {
+				fmt.Println(err)
+			}
+		}()
+		panic("noooo")
+
+	})
+	fmt.Println(ok)
 }

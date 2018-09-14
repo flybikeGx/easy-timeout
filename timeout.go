@@ -1,4 +1,4 @@
-package timelimit
+package timeout
 
 import (
 	"time"

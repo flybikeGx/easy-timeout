@@ -18,10 +18,9 @@ func TestRun(t *testing.T) {
 
 	rand.Seed(time.Now().Unix())
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 10; i++ {
 		timelimit := time.Millisecond * 500
 		runtime := time.Millisecond * time.Duration(rand.Float64()*1000)
-		fmt.Println(timelimit, runtime)
 		if Run(timelimit, func() {
 			time.Sleep(runtime)
 		}) != (timelimit > runtime) {
@@ -41,5 +40,7 @@ func TestPanic(t *testing.T) {
 		panic("noooo")
 
 	})
-	fmt.Println(ok)
+	if !ok {
+		t.Fatal("failed")
+	}
 }
